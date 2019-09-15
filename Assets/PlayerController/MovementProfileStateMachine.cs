@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using PlayerController;
 using UnityEngine;
@@ -80,14 +80,10 @@ public class MovementProfileStateMachine : InputListener
 
     bool ShouldBeSkidding() => ShouldBeginSkid() || ShouldContinueSkidding();
 
-    bool ShouldBeginSkid()
-    {
-        var diffGreaterThanAngle = DifferenceBetweenIntendedMovementAndVelocity() > minAngleToTriggerPivot;
-        var magnitudeGreatThanMin = _characterMotor.PlanarVelocity().magnitude > pivotMinMagnitude;
-        var notSkid = CurrentProfile != skidMovementProfile;
-        //print($"diff greater = {diffGreaterThanAngle}, magnitude greater = {magnitudeGreatThanMin}, notSkid = {notSkid}");
-        return diffGreaterThanAngle && magnitudeGreatThanMin && notSkid;
-    }
+    bool ShouldBeginSkid() => 
+        DifferenceBetweenIntendedMovementAndVelocity() > minAngleToTriggerPivot && 
+        _characterMotor.PlanarVelocity().magnitude > pivotMinMagnitude && 
+        CurrentProfile != skidMovementProfile;
 
     float DifferenceBetweenIntendedMovementAndVelocity() => 
         Mathf.Abs(Vector3.Angle(_currentMovementVector, _characterMotor.PlanarVelocity()));
