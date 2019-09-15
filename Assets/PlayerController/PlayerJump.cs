@@ -50,8 +50,8 @@ namespace PlayerController
             currentExtraGravity = 0;
         }
         
-        bool EligibleForJump() => _groundDetection.CurrentlyOnValidGround(_playerMove.MaxWalkableSlopeAngle) || RecentlyOnValidGround();
-
+        bool EligibleForJump() => 
+            _groundDetection.CurrentlyOnValidGround(_playerMove.MaxWalkableSlopeAngle) || RecentlyOnValidGround();
 
         void Jump() => Jump(new Vector3(0, currentProfile.jumpConfig ? currentProfile.jumpConfig.jumpForce : 0, 0));
 	
