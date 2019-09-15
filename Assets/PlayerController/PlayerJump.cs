@@ -11,7 +11,6 @@ namespace PlayerController
         PlayerMove _playerMove;
 
         [Header("Config")]
-        [SerializeField] float extraGravityBase = 25f;
         [SerializeField] float extraGravitySmoothTime = 2.5f;
         
         [Header("Jump Leniency")]
