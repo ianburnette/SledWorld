@@ -10,18 +10,20 @@ public class MovementProfileStateMachine : InputListener
     [SerializeField] MovementProfile ascendingMovementProfile;
     [SerializeField] MovementProfile descendingMovementProfile;
     [SerializeField] MovementProfile skidMovementProfile;
+    [SerializeField] MovementProfile sledGroundedMovementProfile;
+    [SerializeField] MovementProfile sledAirborneMovementProfile;
 
     [Header("Transition Config")] 
     [SerializeField] float pivotTime;
     [SerializeField] float minAngleToTriggerPivot;
     [SerializeField] float pivotMinMagnitude;
 
-
     [Header("Class References")] 
     GroundDetection _groundDetection;
     PlayerMove _playerMove;
     CharacterMotor _characterMotor;
     PlayerJump _playerJump;
+    PlayerSled _playerSled;
 
     [Header("Debug")]
     [ReadOnly] [SerializeField] MovementProfile currentProfile;
@@ -52,6 +54,7 @@ public class MovementProfileStateMachine : InputListener
         _playerMove = GetComponent<PlayerMove>();
         _characterMotor = GetComponent<CharacterMotor>();
         _playerJump = GetComponent<PlayerJump>();
+        _playerSled = GetComponent<PlayerSled>();
         SetUpProfileEntranceActions();
     }
 
@@ -74,9 +77,19 @@ public class MovementProfileStateMachine : InputListener
 
     MovementProfile SelectMovementProfile()
     {
+        return OnSled() ? SelectOnSledMovementProfile() : SelectOnFootMovementProfile();
+    }
+
+    MovementProfile SelectOnSledMovementProfile() => 
+        Grounded() ? sledGroundedMovementProfile : sledAirborneMovementProfile;
+
+    MovementProfile SelectOnFootMovementProfile()
+    {
         if (!Grounded()) return Ascending() ? ascendingMovementProfile : descendingMovementProfile;
         return ShouldBeSkidding() ? skidMovementProfile : walkMovementProfile;
     }
+
+    bool OnSled() => _playerSled.OnSled;
 
     bool ShouldBeSkidding() => ShouldBeginSkid() || ShouldContinueSkidding();
 

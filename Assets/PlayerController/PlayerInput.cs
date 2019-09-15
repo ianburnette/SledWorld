@@ -16,7 +16,10 @@ public class PlayerInput : MonoBehaviour
     Camera mainCamera;
     
     public delegate void JumpPressDelegate();
-    public static event JumpPressDelegate OnJumpPress;
+    public static event JumpPressDelegate OnJumpPress;   
+    
+    public delegate void SledPressDelegate();
+    public static event SledPressDelegate OnSledPress;
 
     public delegate void JumpReleaseDelegate();
     public static event JumpReleaseDelegate OnJumpRelease;
@@ -41,13 +44,19 @@ public class PlayerInput : MonoBehaviour
     void HandleInput()
     {
         HandleJumpInput();
+        HandleSledInput();
         HandleMovementInput();
     }
-
+    
     void HandleJumpInput()
     {
         if (Input.GetButtonDown("Jump")) OnJumpPress?.Invoke();
         if (Input.GetButtonUp("Jump")) OnJumpRelease?.Invoke();
+    }
+
+    void HandleSledInput()
+    {
+        if (Input.GetButtonDown("Sled")) OnSledPress?.Invoke();
     }
 
     void HandleMovementInput()
