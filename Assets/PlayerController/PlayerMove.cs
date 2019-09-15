@@ -11,20 +11,17 @@ public class PlayerMove : InputListener {
 		set {
 			if (currentProfile == value) return;
 			currentProfile = value;
-			PerformTransitionActions();
+			SetPlayerColliderMaterial();
 		}
 	}
-	public float TimeAtWhichSkidBegan => _timeAtWhichSkidBegan;
 
 	[Header("Slope Behavior")]
 	[SerializeField] float maxWalkableSlopeAngle = 80f;
-	[SerializeField] float slopeCorrectionForce = 10f;
 	public float MaxWalkableSlopeAngle { get => maxWalkableSlopeAngle; set => maxWalkableSlopeAngle = value; }
 	
 	[Header("Private Variables")]
-	GroundDetection groundDetection;
-	CharacterMotor characterMotor;
-	float _timeAtWhichSkidBegan;
+	GroundDetection _groundDetection;
+	CharacterMotor _characterMotor;
 	float _previousMovementAngle;
 	bool _pivoting;
 	Vector2 _currentInputVector;
@@ -39,11 +36,11 @@ public class PlayerMove : InputListener {
 	void Awake()
 	{
 		playerCollider = GetComponent<Collider>();
-		characterMotor = GetComponent<CharacterMotor>();
-		groundDetection = GetComponent<GroundDetection>();
+		_characterMotor = GetComponent<CharacterMotor>();
+		_groundDetection = GetComponent<GroundDetection>();
 	}
 
-	bool Grounded() => groundDetection.GroundRelationship_.grounded;
+	bool Grounded() => _groundDetection.GroundRelationship_.grounded;
 	void FixedUpdate() {
 		UpdatePlayerMovement();
 	}
@@ -53,7 +50,7 @@ public class PlayerMove : InputListener {
 	void ApplyMovementToMotor()
 	{
 		if (!currentProfile) return;
-		characterMotor.MoveTo(
+		_characterMotor.MoveTo(
 			transform.position + _currentMovementDirection, 
 			currentProfile.movementAndRotationSpeedConfig.movementSpeed, 
 			ignoreY: false);
@@ -61,37 +58,21 @@ public class PlayerMove : InputListener {
 		if (Grounded())
 		{
 			if (currentProfile.groundStickinessConfig)
-				characterMotor.ApplyAdditionalForce(GroundStickinessForce());
-			characterMotor.ApplyAdditionalForce(SlopeUp());
+				_characterMotor.ApplyAdditionalForce(GroundStickinessForce());
+			_characterMotor.ApplyAdditionalForce(SlopeUp());
 		}
 
-		characterMotor.RotateToVelocity(currentProfile.movementAndRotationSpeedConfig.rotationSpeed, true);
-		characterMotor.LimitSpeed(false);
+		_characterMotor.RotateToVelocity(currentProfile.movementAndRotationSpeedConfig.rotationSpeed, true);
+		_characterMotor.LimitSpeed(false);
 	}
 
 	
 	Vector3 GroundStickinessForce() => 
-		-groundDetection.GroundRelationship_.groundNormal * currentProfile.groundStickinessConfig.groundStickForce;
+		-_groundDetection.GroundRelationship_.groundNormal * currentProfile.groundStickinessConfig.groundStickForce;
 
-	void PerformTransitionActions()
-	{
-		playerCollider.material = currentProfile.colliderMaterial;
-		//TODO: handle state exiting, but not here!
-		//switch (currentProfile.movementProfile.movement)
-		//{
-		//	case Movements.Walking:
-		//		break;
-		//	case Movements.InAir:
-		//		break;
-		//	case Movements.Skidding:
-		//		timeAtWhichSkidBegan = Time.time;
-		//		break;
-		//	default:
-		//		throw new ArgumentOutOfRangeException();
-		//}
-	}
-	
-	bool IsOnSteepSlope() => groundDetection.GroundRelationship_.groundAngle > MaxWalkableSlopeAngle;
-	Vector3 SlopeUp() => groundDetection.SlopeCorrection() * -Physics.gravity.magnitude;
+	void SetPlayerColliderMaterial() => playerCollider.material = currentProfile.colliderMaterial;
+
+	bool IsOnSteepSlope() => _groundDetection.GroundRelationship_.groundAngle > MaxWalkableSlopeAngle;
+	Vector3 SlopeUp() => _groundDetection.SlopeCorrection() * -Physics.gravity.magnitude;
 
 }
