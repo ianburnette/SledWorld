@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ad2068ef9c4c7585d446e151f63957, type: 3}
+  m_Name: MovementProfileSkidding
+  m_EditorClassIdentifier: Assembly-CSharp:PlayerController:MovementProfile
+  colliderMaterial: {fileID: 13400000, guid: ef6cee01fc951e84eaeb79152036db01, type: 2}
+  movementAndRotationSpeedConfig: {fileID: 11400000, guid: 881da75ceb56bd94a8ebfcf21c42b2df,
+    type: 2}
+  ascendingConfig: {fileID: 0}
+  additionalGravityConfig: {fileID: 0}
+  jumpConfig: {fileID: 11400000, guid: 917a0450926fb124d8bd739587e551fb, type: 2}
+  groundStickinessConfig: {fileID: 11400000, guid: 113d0b1f026887245af3b577579f56eb,
+    type: 2}
