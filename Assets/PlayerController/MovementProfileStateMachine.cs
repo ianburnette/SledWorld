@@ -75,10 +75,7 @@ public class MovementProfileStateMachine : InputListener
         _playerJump.CurrentProfile = CurrentProfile;
     }
 
-    MovementProfile SelectMovementProfile()
-    {
-        return OnSled() ? SelectOnSledMovementProfile() : SelectOnFootMovementProfile();
-    }
+    MovementProfile SelectMovementProfile() => OnSled() ? SelectOnSledMovementProfile() : SelectOnFootMovementProfile();
 
     MovementProfile SelectOnSledMovementProfile() => 
         Grounded() ? sledGroundedMovementProfile : sledAirborneMovementProfile;
