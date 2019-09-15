@@ -4862,7 +4862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db845ce2eef43df49b65282168b14baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkMovementProfile: {fileID: 11400000, guid: 42cfbfb1d3da0d5438c069b70e214cd1,
+  walkMovementProfile: {fileID: 11400000, guid: 8f8c84b836f5cb9439da184622c94850,
     type: 2}
   ascendingMovementProfile: {fileID: 11400000, guid: 4f0fbd00bbfa51b4192cf45d04515bdc,
     type: 2}
@@ -4873,6 +4873,7 @@ MonoBehaviour:
   pivotTime: 0.3
   minAngleToTriggerPivot: 50
   pivotMinMagnitude: 1
+  timeAtWhichSkidBegan: 0
 --- !u!114 &8414273063703750237
 MonoBehaviour:
   m_ObjectHideFlags: 0

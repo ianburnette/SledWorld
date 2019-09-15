@@ -113,8 +113,8 @@ namespace PlayerController
 
     public abstract class InputListener : MonoBehaviour
     {
-        void OnEnable() => SubscribeToInputListeners();
-        void OnDisable() => UnsubscribeFromInputListeners();
+        protected void OnEnable() => SubscribeToInputListeners();
+        protected void OnDisable() => UnsubscribeFromInputListeners();
 
         protected virtual void SubscribeToInputListeners() {}
         protected virtual void UnsubscribeFromInputListeners() {}

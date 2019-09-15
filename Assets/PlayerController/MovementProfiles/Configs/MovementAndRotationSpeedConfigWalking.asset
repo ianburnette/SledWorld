@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MovementAndRotationSpeedConfigWalking
   m_EditorClassIdentifier: Assembly-CSharp:PlayerController:MovementAndRotationSpeedConfig
   movementSpeed: 120
-  rotationSpeed: 20
+  rotationSpeed: 5
