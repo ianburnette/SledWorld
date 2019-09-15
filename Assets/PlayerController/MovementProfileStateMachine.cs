@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using PlayerController;
 using UnityEngine;
@@ -30,7 +30,8 @@ public class MovementProfileStateMachine : InputListener
     Vector3 _currentMovementVector;
 
     Dictionary<MovementProfile, Action> _profileEntranceActions;
-    public MovementProfile CurrentProfile
+
+    MovementProfile CurrentProfile
     {
         get => currentProfile;
         set
