@@ -4782,6 +4782,7 @@ GameObject:
   - component: {fileID: 6078940594454854552}
   - component: {fileID: 6078940593810531136}
   - component: {fileID: 6078940594273902585}
+  - component: {fileID: 1472632090}
   m_Layer: 8
   m_Name: BasePlayer
   m_TagString: Player
@@ -4870,8 +4871,10 @@ MonoBehaviour:
     type: 2}
   skidMovementProfile: {fileID: 11400000, guid: 801f870d7d0cd404b90c0ab421b977bb,
     type: 2}
-  sledGroundedMovementProfile: {fileID: 0}
-  sledAirborneMovementProfile: {fileID: 0}
+  sledGroundedMovementProfile: {fileID: 11400000, guid: dbf2767ad32f58c4d987fdef01df10f5,
+    type: 2}
+  sledAirborneMovementProfile: {fileID: 11400000, guid: f1ba236c195365e47aebbf668ef9f6a9,
+    type: 2}
   pivotTime: 0.3
   minAngleToTriggerPivot: 70
   pivotMinMagnitude: 1
@@ -4998,6 +5001,18 @@ MonoBehaviour:
   sphereCastRadius: 0.1
   raycastTransformOffset: 0
   maxObstacleYnormal: 0.1
+--- !u!114 &1472632090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6784658341565322031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a1f225d493547cb8787413edd2eb748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6784658342233986878
 GameObject:
   m_ObjectHideFlags: 0
