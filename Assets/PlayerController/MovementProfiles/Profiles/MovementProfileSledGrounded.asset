@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ad2068ef9c4c7585d446e151f63957, type: 3}
+  m_Name: MovementProfileSledGrounded
+  m_EditorClassIdentifier: 
+  colliderMaterial: {fileID: 13400000, guid: edd3d77ab06917547a1458482bea4a1b, type: 2}
+  movementAndRotationSpeedConfig: {fileID: 11400000, guid: faaf4763cedc8874aa1a3444899dd9a1,
+    type: 2}
+  ascendingConfig: {fileID: 0}
+  additionalGravityConfig: {fileID: 0}
+  jumpConfig: {fileID: 0}
+  groundStickinessConfig: {fileID: 11400000, guid: 113d0b1f026887245af3b577579f56eb,
+    type: 2}
+  sledFrictionConfig: {fileID: 11400000, guid: 212b828c25b0950468dad9292d4b1369, type: 2}
