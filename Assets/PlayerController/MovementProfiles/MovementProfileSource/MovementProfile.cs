@@ -11,5 +11,6 @@ namespace PlayerController
         public AdditionalGravityConfig additionalGravityConfig;
         public JumpConfig jumpConfig;
         public GroundStickinessConfig groundStickinessConfig;
+        public SledFrictionConfig sledFrictionConfig;
     }
 }
