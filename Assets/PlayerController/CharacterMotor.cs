@@ -37,7 +37,7 @@ public class CharacterMotor : MonoBehaviour, IVelocityLimiter {
 	public void AddRelativeForce(Vector3 direction, ForceMode forceMode) =>
 		_myRigidbody.AddRelativeForce(direction, forceMode);
 
-	public void MoveTo(Vector3 destination, float acceleration, bool ignoreY)
+	public void MoveTo(Vector3 destination, float acceleration, bool ignoreY, ForceMode forceMode = ForceMode.VelocityChange)
 	{
 		_targetMovementPosition = (destination - transform.position);
 		if (ignoreY)
@@ -46,7 +46,7 @@ public class CharacterMotor : MonoBehaviour, IVelocityLimiter {
 		distanceToTarget = _targetMovementPosition.magnitude;
 		if (distanceToTarget <= movementSensitivity)
 			return;
-		_myRigidbody.AddForce(acceleration * Time.deltaTime * _targetMovementPosition, ForceMode.VelocityChange);
+		_myRigidbody.AddForce(acceleration * Time.deltaTime * _targetMovementPosition, forceMode);
 	}
 
 	public void RotateToVelocity(float turnSpeed, bool ignoreY) {
