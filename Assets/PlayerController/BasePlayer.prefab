@@ -4870,9 +4870,12 @@ MonoBehaviour:
     type: 2}
   skidMovementProfile: {fileID: 11400000, guid: 801f870d7d0cd404b90c0ab421b977bb,
     type: 2}
+  sledGroundedMovementProfile: {fileID: 0}
+  sledAirborneMovementProfile: {fileID: 0}
   pivotTime: 0.3
-  minAngleToTriggerPivot: 50
+  minAngleToTriggerPivot: 70
   pivotMinMagnitude: 1
+  currentProfile: {fileID: 0}
   timeAtWhichSkidBegan: 0
 --- !u!114 &8414273063703750237
 MonoBehaviour:
@@ -4889,7 +4892,6 @@ MonoBehaviour:
   currentProfile: {fileID: 0}
   playerCollider: {fileID: 4343477905790040931}
   maxWalkableSlopeAngle: 80
-  slopeCorrectionForce: 10
 --- !u!114 &9023853785900751306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4942,7 +4944,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb0fafe912e4aca9e78be649b9b8438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  extraGravityBase: 25
   extraGravitySmoothTime: 2.5
   recentlyGrounded: 0
   recentGroundAngle: 0
@@ -5307,10 +5308,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6784658341565322030}
     m_Modifications:
-    - target: {fileID: 100002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
-      propertyPath: m_Name
-      value: BlobShadowProjector
-      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5354,6 +5351,10 @@ PrefabInstance:
     - target: {fileID: 400002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
+      propertyPath: m_Name
+      value: BlobShadowProjector
       objectReference: {fileID: 0}
     - target: {fileID: 11900000, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
       propertyPath: m_Orthographic
